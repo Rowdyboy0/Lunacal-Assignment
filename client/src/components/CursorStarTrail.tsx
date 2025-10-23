@@ -80,7 +80,7 @@ export default function CursorStarTrail() {
     <div className="fixed inset-0 pointer-events-none z-[9999]">
       {stars.map(star => {
         const age = Date.now() - star.createdAt;
-        const opacity = Math.max(0, 1 - age / 800);
+        const opacity = Math.max(0, 0.4 - (age / 800) * 0.4);
 
         return (
           <div
