@@ -51,12 +51,12 @@ export default function Home() {
       
       <div className="min-h-screen bg-background">
         <div className="container mx-auto px-8 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12 items-start">
-            <div className="hidden md:flex items-start justify-center" data-testid="div-left-blank">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
+            <div className="hidden md:flex items-start justify-center self-stretch" data-testid="div-left-blank">
               <Card className="w-full max-w-md h-full" />
             </div>
 
-            <div className="flex flex-col space-y-6 max-w-md" data-testid="div-right-widgets">
+            <div className="flex flex-col space-y-6 max-w-md self-stretch" data-testid="div-right-widgets">
               <TabWidget tabs={tabs} />
               <GalleryWidget 
                 images={galleryImages}
