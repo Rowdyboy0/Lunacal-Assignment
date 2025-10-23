@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import { useClickSound } from '@/hooks/useClickSound';
 
@@ -35,59 +34,51 @@ export default function GalleryWidget({ images: initialImages, onAddImage }: Gal
     console.log('Add image triggered');
   };
 
-  const scrollPercentage = images.length > 3 
-    ? (currentIndex / maxIndex) * 100 
-    : 0;
-
   return (
-    <Card className="w-full">
+    <Card className="w-full rounded-[20px] shadow-xl">
       <div className="p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold font-accent" data-testid="text-gallery-title">
-            Gallery
-          </h2>
+          <div className="bg-background text-foreground px-6 py-3 rounded-[18px] shadow-lg">
+            <h2 className="text-lg font-semibold font-accent" data-testid="text-gallery-title">
+              Gallery
+            </h2>
+          </div>
 
-          <div className="flex items-center gap-2">
-            <Button
-              size="icon"
-              variant="ghost"
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleAddImage}
+              data-testid="button-add-image"
+              className="bg-background text-foreground px-5 py-2.5 rounded-[18px] text-sm font-medium shadow-lg hover-elevate transition-all duration-300 flex items-center gap-2"
+            >
+              <Plus className="h-4 w-4" />
+              ADD IMAGE
+            </button>
+
+            <button
               onClick={handlePrevious}
               disabled={currentIndex === 0}
               data-testid="button-gallery-previous"
-              className="h-8 w-8"
+              className="h-11 w-11 rounded-full bg-background text-foreground shadow-lg hover-elevate transition-all duration-300 flex items-center justify-center disabled:opacity-40"
             >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
+              <ChevronLeft className="h-5 w-5" />
+            </button>
 
-            <Button
-              size="icon"
-              variant="ghost"
+            <button
               onClick={handleNext}
               disabled={currentIndex >= maxIndex}
               data-testid="button-gallery-next"
-              className="h-8 w-8"
+              className="h-11 w-11 rounded-full bg-background text-foreground shadow-lg hover-elevate transition-all duration-300 flex items-center justify-center disabled:opacity-40"
             >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={handleAddImage}
-              data-testid="button-add-image"
-              className="bg-primary/15 hover:bg-primary/25"
-            >
-              <Plus className="h-4 w-4 mr-1" />
-              Add Image
-            </Button>
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 mb-4">
+        <div className="grid grid-cols-3 gap-4">
           {visibleImages.map((image, index) => (
             <div
               key={currentIndex + index}
-              className="aspect-square rounded-lg overflow-hidden border border-card-border transition-all duration-300 hover:scale-105 hover:border-primary/50"
+              className="aspect-square rounded-[24px] overflow-hidden transition-all duration-300 hover:scale-105"
               data-testid={`image-gallery-${currentIndex + index}`}
             >
               <img
@@ -98,18 +89,6 @@ export default function GalleryWidget({ images: initialImages, onAddImage }: Gal
             </div>
           ))}
         </div>
-
-        <div className="w-full h-1 bg-border rounded-full overflow-hidden">
-          <div
-            className="h-full bg-primary rounded-full transition-all duration-300"
-            style={{ width: `${Math.min(100, (3 / images.length) * 100)}%`, marginLeft: `${scrollPercentage}%` }}
-            data-testid="scrollbar-gallery"
-          />
-        </div>
-
-        <p className="text-xs text-muted-foreground mt-2 text-center" data-testid="text-gallery-count">
-          {currentIndex + 1}-{Math.min(currentIndex + 3, images.length)} of {images.length}
-        </p>
       </div>
     </Card>
   );

@@ -12,9 +12,12 @@ export default function Home() {
       id: 'about',
       label: 'About Me',
       content: (
-        <div className="space-y-3">
-          <p className="text-sm text-foreground leading-relaxed">
-            Content for About Me will be added here.
+        <div className="space-y-4">
+          <p className="text-base text-muted-foreground leading-relaxed">
+            Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.
+          </p>
+          <p className="text-base text-muted-foreground leading-relaxed">
+            I was born and raised in Albany, NY & have been living in Santa Carla for the past 10 years my wife Tiffany and my 4 year old twin daughters- Emma and Ella. Both of them are just starting school, so my calender is usually blocked between 9-10 AM. This is a...
           </p>
         </div>
       ),
@@ -24,7 +27,7 @@ export default function Home() {
       label: 'Experiences',
       content: (
         <div className="space-y-3">
-          <p className="text-sm text-foreground leading-relaxed">
+          <p className="text-base text-muted-foreground leading-relaxed">
             Content for Experiences will be added here.
           </p>
         </div>
@@ -35,7 +38,7 @@ export default function Home() {
       label: 'Recommended',
       content: (
         <div className="space-y-3">
-          <p className="text-sm text-foreground leading-relaxed">
+          <p className="text-base text-muted-foreground leading-relaxed">
             Content for Recommended will be added here.
           </p>
         </div>

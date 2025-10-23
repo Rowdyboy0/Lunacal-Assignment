@@ -22,34 +22,26 @@ export default function TabWidget({ tabs }: TabWidgetProps) {
   };
 
   return (
-    <Card className="w-full">
+    <Card className="w-full rounded-[20px] shadow-xl">
       <div className="p-6">
-        <div className="flex space-x-6 border-b border-border mb-6">
+        <div className="flex gap-2 mb-6">
           {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => handleTabClick(tab.id)}
               data-testid={`button-tab-${tab.id}`}
-              className={`pb-3 text-sm font-medium transition-all duration-300 relative ${
+              className={`px-6 py-3 text-base font-medium transition-all duration-300 rounded-[18px] ${
                 activeTab === tab.id
-                  ? 'text-foreground'
-                  : 'text-muted-foreground hover:text-secondary-foreground'
+                  ? 'bg-background text-foreground shadow-lg'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {tab.label}
-              {activeTab === tab.id && (
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary transition-all duration-300"
-                  style={{
-                    boxShadow: '0 0 8px hsl(var(--primary))',
-                  }}
-                />
-              )}
             </button>
           ))}
         </div>
 
-        <div className="min-h-[200px]">
+        <div className="min-h-[200px] max-h-[280px] overflow-y-auto pr-2 scrollbar-custom">
           {tabs.map(tab => (
             <div
               key={tab.id}
