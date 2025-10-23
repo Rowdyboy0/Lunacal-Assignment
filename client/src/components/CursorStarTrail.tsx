@@ -5,7 +5,7 @@ interface Star {
   x: number;
   y: number;
   color: string;
-  opacity: number;
+  createdAt: number;
 }
 
 const colors = [
@@ -48,7 +48,7 @@ export default function CursorStarTrail() {
           x: e.clientX,
           y: e.clientY,
           color: colors[Math.floor(Math.random() * colors.length)],
-          opacity: 1,
+          createdAt: Date.now(),
         };
 
         setStars(prev => [...prev.slice(-14), newStar]);
@@ -66,7 +66,7 @@ export default function CursorStarTrail() {
 
     const interval = setInterval(() => {
       setStars(prev => prev.filter(star => {
-        const age = Date.now() - star.id;
+        const age = Date.now() - star.createdAt;
         return age < 800;
       }));
     }, 50);
@@ -79,7 +79,7 @@ export default function CursorStarTrail() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999]">
       {stars.map(star => {
-        const age = Date.now() - star.id;
+        const age = Date.now() - star.createdAt;
         const opacity = Math.max(0, 1 - age / 800);
 
         return (

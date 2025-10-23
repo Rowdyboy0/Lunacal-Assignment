@@ -1,6 +1,7 @@
 import TabWidget from '@/components/TabWidget';
 import GalleryWidget from '@/components/GalleryWidget';
 import CursorStarTrail from '@/components/CursorStarTrail';
+import { Card } from '@/components/ui/card';
 import image1 from '@assets/generated_images/Purple_teal_gradient_abstract_art_b249467c.png';
 import image2 from '@assets/generated_images/Amber_geometric_abstract_composition_3c0d8ecf.png';
 import image3 from '@assets/generated_images/Purple_cyan_cosmic_nebula_404760e5.png';
@@ -51,7 +52,8 @@ export default function Home() {
       <div className="min-h-screen bg-background">
         <div className="container mx-auto px-8 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
-            <div className="hidden md:block" data-testid="div-left-blank">
+            <div className="hidden md:flex items-start justify-center" data-testid="div-left-blank">
+              <Card className="w-full max-w-md min-h-[400px]" />
             </div>
 
             <div className="space-y-6 max-w-md" data-testid="div-right-widgets">
